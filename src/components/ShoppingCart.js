@@ -1,4 +1,5 @@
 import React from 'react';
+import CartContext from "../contexts/CartContext";
 
 // Components
 import Item from './ShoppingCartItem';
@@ -11,16 +12,18 @@ const ShoppingCart = props => {
 	};
 
 	return (
-		<div className="shopping-cart">
-			{props.cart.map(item => (
-				<Item key={item.id} {...item} />
-			))}
+		<CartContext >
+			<div className="shopping-cart">
+				{props.cart.map(item => (
+					<Item key={item.id} {...item} />
+				))}
 
-			<div className="shopping-cart__checkout">
-				<p>Total: ${getCartTotal()}</p>
-				<button>Checkout</button>
+				<div className="shopping-cart__checkout">
+					<p>Total: ${getCartTotal()}</p>
+					<button>Checkout</button>
+				</div>
 			</div>
-		</div>
+		</CartContext>
 	);
 };
 
